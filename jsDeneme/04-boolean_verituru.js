@@ -3,19 +3,19 @@
 //0 ve 1'i Anlamak
 let isActive = false;
 isActive = true;
-console.log(isActive);
+console.log(isActive);//true
 
 let userName;
 let isUserName = Boolean(userName);
-console.log(isUserName);
+console.log(isUserName);//false
 
 Boolean("11");//true
 Boolean("0"); //true
-Boolean("");//false
+Boolean("");//false empty
 //içinde bilgi varsa true yoksa false
 userName = "user";
 
-console.log("user Name: ", Boolean(userName));
+console.log("user Name: ", Boolean(userName));// user Name:True
 
 //0,-0,null,false,Nan,undefined,("")->false döner;
 Boolean(0); // false
@@ -36,7 +36,7 @@ Boolean(Symbol()) // true
 !!Symbol() // true
 Boolean(function () { }) // true
 
-console.log(true + false)
+console.log(true + false)//1
 //"+" operatörü numeric işlem yapar bu durumlardan boolean ifadeler numaric coercion'a uğrar.
 //Number(true) + Number(false) dönüşen ifade
 //1 + 0 şeklini alır Sonuç = 1
