@@ -47,7 +47,7 @@ const animals = document.getElementsByTagName('p');
 //// Çıktı:  HTMLCollection(4) [p, p, p, p]
 //Yazmanız yeterli olacaktır.
 //Ayrıca sayfadaki tüm etiketleri bu şekilde getirebilirsiniz.
-
+//HTMLCollection bir dizi değildir
    document.getElementsByTagName('*')
    console.log(document.getElementsByTagName('*'))
 //// Çıktı: HTMLCollection(33) [html, head, meta, link#.....
@@ -100,11 +100,14 @@ const animals = document.getElementsByTagName('p');
             console.log(elems);
            /* Metotları bir arada kullanabilirsiniz.Yukarda öğrendiğimiz metotları bir arada       kullanabiliyoruz.Önce tek bir elemanı seçerek ardından içinde ikinci bir sorguyu yapabiliyoruz.*/
 
-     /* Örneğin;
+      // Örneğin;
 
-             signup id'li elemanın içindeki tüm input elemanlarını seçmek istersek;
+            //  signup id'li elemanın içindeki tüm input elemanlarını seçmek istersek;
  
-             const inputs = document.getElementById('signup').getElementsByTagName('input');
-             const inputs = document.querySelector('#signup').querySelectorAll('input');
-             const inputs = document.querySelectorAll('#signup>input')
-             Sonrasında oluşturduğumuz inputs değişkenine Console üzerinden ulaşabilirsiniz. */
+             const inputs1 = document.getElementById('signup').getElementsByTagName('input');
+             const inputs2 = document.querySelector('#signup').querySelectorAll('input');
+             const inputs3 = document.querySelectorAll('#signup>input')
+             console.log(inputs1)//htmlcollection(dizi değildir doğrudan içerisinde dönemezssin)
+             console.log(inputs2)//nodelist(dizidir. içerisinde foreach veya for ile doğrudan dönebilirsin)
+             console.log(inputs3)//nodelist
+            //  Sonrasında oluşturduğumuz inputs değişkenine Console üzerinden ulaşabilirsiniz. 
