@@ -126,4 +126,9 @@ console.log(myArr);
 //concat => ucuna ekleme yapar
 
 const newMyArr = myArr.concat(["ali", "veli","furkan","resul","hüseyin"])// sonuna ekler.const yazarız değiştirilebilir diziler ve fonksiyonlar const ile yazılır.yani dizinin içeriğinde değişiklik yapabilirsin fakat diziyi komple değiştirip string ya da number bir ifadeye çevirmene izin vermez .Özet olarak const ile tanımlanmasının amacı yapısını bozmadan değişikliklere izin vermesidir.Yani diziyse dizi kalacaktır sadece değişiklik yapılabilir.
-console.log(newMyArr)
+console.log(newMyArr);
+//concat dizileri de birleştirir fakat newMyArr de değişiklik yapmaz yeni atama yaptığımız Array değişkeninde bunu görebiliriz.Çünkü yeni bir dizi oluşturur.
+const myArr2=[1,2,3];
+const myArr3=['hasan','basri',true,NaN,undefined,0];
+const Array=newMyArr.concat(myArr2,myArr3);
+console.log(Array);
