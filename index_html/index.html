@@ -25,12 +25,17 @@
     <ul class="list-group" id="xxx">
     </ul>
 
-    <form onsubmit="handleSubmit(e)" method="post">
+    <form onsubmit="handleSubmit(event)" method="post">
         <input type="text" name="username" placeholder="Kullanıcı adınızı giriniz" onchange="handleChange(event)" />
         <input type="password" name="password" placeholder="Şifrenizi giriniz." onchange="handleChange(event)" />
-        <button type="submit">Giriş</button>
+        <button  type="submit">Giriş</button>
     </form>
 
+<button id="infobtn" >tıkla</button>
+<hr/>
+<hr/>
+<hr/>
+<input id="Address"  type="text" placeholder="lütfen adres giriniz!"/>
 
     <div id="alert">
     </div>
@@ -67,8 +72,10 @@
 
 
     <h3 id="counter">100</h3>
-    <button id="increase">Arttir</button>
+    <button id="increase" name="inc">Arttir</button>
     <button id="decrease">Azalt</button>
+
+
     <form action="#" id="selectColor">
         <label for="color">Choose a color</label>
         <select name="colors" id="select">
@@ -153,6 +160,15 @@
       <!-- <script src="/jsDeneme/15-coklu_if_elseif_ile_calismak.js" ></script> -->
       <!-- <script src="/jsDeneme/16-ternary_operatoru.js" ></script> -->
       <!-- <script src="/jsDeneme/17_kosullarla_calismak_bolumsonu_egzersiz.js" ></script> -->
-      <script src="/jsDeneme/18-fonksiyonlar_ilk_fonksiyon.js" ></script>
+      <!-- <script src="/jsDeneme/18-fonksiyonlar_ilk_fonksiyon.js" ></script> -->
+      <!-- <script src="/jsDeneme/19-arrow_function.js" ></script> -->
+      <!-- <script src="/jsDeneme/20-callback_function.js" ></script> -->
+      <!-- <script src="/jsDeneme/21-fonksiyonlara_parametre_atamak_ve_fonksiyondan_geridonus_almak.js" ></script> -->
+       <!-- <script src="/jsDeneme/22-dom_etkinlikleriyle_calismak.js" ></script> -->
+      <!-- <script src="/jsDeneme/23-dom_etkinlikleriyle_calismak.js" ></script> -->
+      <!-- <script src="/jsDeneme/24-local_storage.js" ></script> -->
+       <!-- <script src="/jsDeneme/25-local_storage_icerisine_farklı_türde_veri_ekleme.js"></script>  -->
+        <!-- <script src="/jsDeneme/26-local_storage_egzersiz.js"></script>   -->
+         <script src="/jsDeneme/27-form_formsubmit_yonetimi.js"></script>   
 </body>
 </html>
