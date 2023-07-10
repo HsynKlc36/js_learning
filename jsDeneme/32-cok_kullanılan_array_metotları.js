@@ -1,0 +1,106 @@
+// Cok Kullanilan Array(Dizi) Metotlari ve Array icinde Array
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+// https://www.w3schools.com/js/js_array_methods.asp
+
+let items = [1, 2, 3, 4, 5]
+
+// Array icinde Array:
+let femaleUsers = ["Ayse", "Hulya", "Merve"]
+let maleUsers = ["Ahmet", "Hasan", "Mehmet"]
+items.push(femaleUsers)
+items.unshift(maleUsers)
+console.log(items)//[["Ahmet", "Hasan", "Mehmet"],1, 2, 3, 4, 5,["Ayse", "Hulya", "Merve"]]
+console.log(items.length)// 7 elemanlıdır içindeki array'leri tek eleman olarak kabul eder
+console.log(items[0].length)//0.indexin eleman uzunluğu 3 olmalıdır cünkü oda bir arraydir
+console.log(items[0][1])//0.indexin 1.indeksini verir yani 'Hasan'.
+
+
+// Array icerisinden oge ayirmak -> splice(pos, item?)
+let newItems = items.splice(2, 4) //2.indeksten başla 4 eleman kes dedik ve sildiklerimizi değişkene attık
+console.log("newItems:",newItems)// kestiği elemanları yakalar [2,3,4,5] 'i keser ve kestiklerini yakalayıp yeni bir dizi içerisinde  tutar. Tek eleman dahi olsa dizide tutacaktır!
+console.log(items);//[["Ahmet", "Hasan", "Mehmet"],1,["Ayse", "Hulya", "Merve"]]
+// Array icerisindeki ogenin index bilgisini bulmak -> indexOf('value')
+items.unshift("lorem")
+items.push("ipsum")
+console.log(items)//['lorem',["Ahmet", "Hasan", "Mehmet"],1,["Ayse", "Hulya", "Merve"],'ipsum']
+console.log(items.indexOf("lorem"))// 0.indexte olduğunu gösterir .bulamazsa -1 dönderir.
+console.log(items.indexOf("Hasan"))// bulamaz çünkü hasan dizinin içerisindeki eleman olan bir başka dizidedir ve doğrudan bulamaz bu yüzden -1 dönderir.
+console.log(items[1].indexOf("Hasan"))// 1.index'i döner
+
+
+// Array Kopyalamak -> slice, [...ES6]
+let copyItems = items
+console.log(items)
+
+
+copyItems.pop() //son ögeyi çıkardık fakat aynı nesneyi refere ettikleri için ikisinde son hali aynı olacaktır.
+console.log("items",items)//['lorem',["Ahmet", "Hasan", "Mehmet"],1,["Ayse", "Hulya", "Merve"]]
+console.log("copyItems",copyItems)//['lorem',["Ahmet", "Hasan", "Mehmet"],1,["Ayse", "Hulya", "Merve"]]
+
+console.log("kopyalandıktan sonraki hali")
+copyItems = items.slice()// kopyalama yaptı(deep copy)
+copyItems.pop()//son ögeyi çıkarttık
+console.log("Items", items)// 4 eleman kaldı ve sadece kopyasından silme işlemi yaptı
+console.log("copyItems", copyItems)// 3 elemanlı kaldı 
+
+// Iki Array Bilgisini Birlestirmek -> [...ES6, ...ES6]
+let allUsers = [...femaleUsers, ...maleUsers]// es6 birden fazla array yapısını birleştirmek için kullanılır dizi içeriisnde dizi olmayacaktır.Çünkü diziden çıkarır ve string şekilde yayar yani [["Ayse", "Hulya", "Merve"],["Ahmet", "Hasan", "Mehmet"]] değilde ["Ayse", "Hulya", "Merve","Ahmet", "Hasan", "Mehmet"] bu şekilde olacaktır!
+console.log(allUsers)
+
+// Array icerisindeki bilgiyi String'e cevirmek -> toString, join
+console.log(allUsers.toString())//Ayse, Hulya, Merve, Ahmet, Hasan, Mehmet
+console.log(allUsers.join("-")) //Ayse-Hulya-Merve-Ahmet-Hasan-Mehmet
+
+
+// Istedigimiz Index Bilgisine Oge Eklemek -> splice(index, 0, value)
+let userSplice=allUsers.splice(allUsers.length - 1, 0, "hüseyin")//son index' hüseyini ekler son indeksteki değeride bir fazlasına atar yani 6. indekse ekliyorsam hüseyini 6.indeksteki değerde artık 7.indekse kayacaktır.["Ayse", "Hulya", "Merve","Ahmet","Hasan","hüseyin", "Mehmet"]
+console.log(userSplice);//[] kesme yapmadığı için boş dizi döner
+console.log(allUsers);
+allUsers.splice(Math.floor(allUsers.length/2),0,"resul")
+// ortadaki indekse veri ekleme 3. indexe ekleme yapar ["Ayse", "Hulya","Merve","resul","Ahmet","Hasan","hüseyin", "Mehmet"]
+console.log(allUsers)
+
+//concat=>burada sondan ekleme yapar ve spread(...items) gibi yayarak yani dizi de bile olsa çıkarıp string şekilde yayarak yazacaktır aşağıdaki örnekteki gibi!
+const newAllUsers = allUsers.concat(["Furkan", "Arkin"], ["Reha"],'erkan');
+console.log(newAllUsers);//["Ayse", "Hulya","Merve","resul","Ahmet","Hasan","hüseyin", "Mehmet","Furkan", "Arkin", "Reha","erkan"]
+
+//slice
+console.log(newAllUsers.slice(0, 1));//['Ayse']
+console.log(newAllUsers.slice(1, 5));//1.indexten başlar 5.index'e kadar alır fakat 5. index'i dahil etmez aldığı elemanlarda yine dizi içerisindedir.(4) ['Hulya', 'Merve', 'resul', 'Ahmet']
+console.log(newAllUsers.slice(1, -1));//dizinin eleman sayısını bilmiyorsak ve baştan ve sondan hangi indexten itibaren dahil olmasını istiyorsak bu şekilde uygularız. baştan ve sondan 1'er index'i dahil etmez (10) ['Hulya', 'Merve', 'resul', 'Ahmet', 'Hasan', 'hüseyin', 'Mehmet', 'Furkan', 'Arkin', 'Reha']
+console.log(newAllUsers);// (12) ['Ayse', 'Hulya', 'Merve', 'resul', 'Ahmet', 'Hasan', 'hüseyin', 'Mehmet', 'Furkan', 'Arkin', 'Reha', 'erkan']
+
+const studentList = ["Murat", "Aysenur", "Ozlem","Osman", "Zeynep", "Hazel", "Osman","furkan","arkın"];
+
+const numbers = [34, 12, 646, 93842, 1, -5, 32, -25, 90, 55];
+
+//every => dizi içerisindeki tüm elemanları dolaşır ve koşulun hepsi için sağlaması gerekir bu durumda true döner fakat 1 tanesi bile karşılamazsa false döner.
+console.log(
+    numbers.every(number => number > -100)
+)
+
+//some => dizi içerisindeki tüm elemanları dolaşır ve koşulun 1tanesi için bile sağlaması yeterlidir yani bu durumda true döner fakat hiçbiri sağlamazsa false döner!
+console.log(
+    numbers.some(number => number > 0)
+)
+
+
+//find => find yöntemi, bir dizide belirli bir koşulu sağlayan ilk öğeyi bulmak için kullanılır. Eğer koşulu sağlayan bir öğe bulunursa, bu öğeyi döndürür. Eğer koşulu sağlayan bir öğe bulunmazsa, undefined değerini döndürür.False ise koşul döngüde devam eder true geldiğinde dizide dönmeyi bırakır ve yakaladığı değeri döner!
+console.log(
+    studentList.find((student, index) => {
+        console.log(index)
+        //işlemler....
+        return student === "Osman";
+    })
+)
+
+//findLast =>find yöntemi, bir dizide belirli bir koşulu sağlayan ilk öğeyi bulmak için kullanılır.fakat dizinin sonundan başlayarak arama yapar. Eğer koşulu sağlayan bir öğe bulunursa, bu öğeyi döndürür. Eğer koşulu sağlayan bir öğe bulunmazsa, undefined değerini döndürür.False ise koşul döngüde devam eder true geldiğinde dizide dönmeyi bırakır ve yakaladığı değeri döner!
+console.log(studentList.findLast((student, index) => {
+    console.log(index)
+    return student === "Osman";
+}))
+
+//findIndex => bütün diziyi dolaşır koşulun sağladığı ilk  index'i verir.Eğerki koşulu sağlayan öğe bulunamazsa -1 döner!
+console.log(
+    studentList.findIndex(student => student === "Hazel")
+)
