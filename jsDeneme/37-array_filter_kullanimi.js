@@ -11,6 +11,15 @@ const PRODUCTS = ["Mic", "Cable", "Speaker", "Desktop PC", "Server", "Mouse", "K
 const NEW_PRODUCTS = PRODUCTS.filter(item => item.length > 5)// koşulu sağlayanlar true döner ve yeni bir diziye atılır!
 console.log(NEW_PRODUCTS)//[ "Speaker", "Desktop PC", "Server","Keyboard"]
 
+const numbers=[2,3,5,7,11,4,6]
+const newNumbers=numbers.filter((number,index,array)=>{
+    //number=number*2; foreach ve filter da doğrudan parametre değiştirilmez yani numbers dizisini bu şekilde doğrudan elemanlarını değiştiremezsin
+    array[index]=number*2; //fakat bu şekilde array olarak numbers dizisini parametre verip bu şekilde değişiklik yapabilirsin.genel olarak foreach de elemanları döneriz ve yeni bir dizi oluşmaz! filter da ise koşulu sağlayanlar true döner ve yeni diziye atar! false olanları bu diziye atmaz fakat numbers dizisi üzerinde de yukarıda anlattığım gibi değişiklik yapılabilir. 
+   return (!(number%2))// burada 2 ye bölünenler true döner ve bunları diziye atar
+
+})
+console.log(newNumbers)
+console.log(numbers)//[4,6,10,14,22,8,12]
 
 // aktif kullanicilar ??
 const USERS = [

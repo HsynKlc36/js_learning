@@ -36,5 +36,13 @@ numbers.forEach( item=> {
 });
 console.log(newArray);//[2,33,1,3,27,39]
 
-
+numbers.forEach( (item,index,arr)=> {
+    if(!(item%2)){
+        arr[index]=item*2
+    } ;
+    if((item%2)){
+        arr[index]=item*3
+    } 
+});
+console.log(numbers);
 
