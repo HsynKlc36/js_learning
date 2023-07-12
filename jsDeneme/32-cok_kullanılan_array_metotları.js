@@ -104,3 +104,54 @@ console.log(studentList.findLast((student, index) => {
 console.log(
     studentList.findIndex(student => student === "Hazel")
 )
+
+//includes => verilen dizi içerisinde arama yapar eğerki yakalarsa true yakalayamazsa false döner!
+const developers=['hasan','yanbasan','mahmut','kamil']
+console.log(developers.includes('hasan'))
+
+//at => dizi içerisindeki verilen index'in karşılığında value'sunu döndürür.Eğerki öyle bir index yoksa undefined döner!
+console.log(developers.at(1));//yanbasan
+
+//reduce 
+//array.reduce(function(total,currentValue,currentIndex,arr),initialValue) 
+//1. ve 2. parametre required diğerleri ise optional' dir!
+
+//1. parametre => total yani elinde olan son durum. dizi içeriisnde nesne , string,number,boolean  olması farketmez sadece dizi içerisinde yakaladıklarımızı diziye atmak istiyorsak initialValue'ya [] dizi atamalıyız ya da içine birşeyler ekleyedebiliriz.diğer türlü total parametresi dizi içerisindeki algoritmaya göre diziyi her döndükten sonraki elde olan total veriyi verecektir.eğerki salt olarak toplama ya da çıkarma yapmak için kullanacaksanız initial parametreyi 0 alabilirsiniz ya da oraya bir parametre girmeseniz dahi 0 olarak kabul edecektir.
+//2. parametre => bu parametre ise o dizideki elemanı temsil eder.yani reduce tüm diziyi döndüğünü düşünürsek her dönüşteki item'ları temsil eder!
+//3. parametre => bu parametre ise o dizi içerisinde dönülen item'ın parametresidir!
+const nums = [1, 2, 3, 4, 5]
+console.log(
+    //             callback(acc, current), ..... , initial value
+    nums.reduce(
+      (total, currentNumber) => {
+        console.log(`total: ${total} currentNumber: ${currentNumber}`)
+        return total * currentNumber
+        //return total + currentNumber 
+        //return total - currentNumber 
+      }
+    , 6)
+  )
+  
+  const studentObjList = [
+    {name: "Halil Can Toptas", course: "Frontend Dev", instructor: "Orkun Durmaz", score: 90},
+    {name: "Serkan Duman", course: "Frontend Dev", instructor: "Orkun Durmaz", score: 80},
+    {name: "Aysenur Altinsoy", course: "Frontend Dev", instructor: "Orkun Durmaz", score: 45},
+    {name: "Arkin Zat", course: "Frontend Dev", instructor: "Orkun Durmaz", score: 65},
+  ];
+  
+
+  const reducedStudentList = studentObjList.reduce(
+    (studentNames, currentStudent) => {
+      // console.log(studentNames)
+      return [...studentNames, currentStudent.name]
+    }, ['hüseyin']
+  );
+  
+  console.log(reducedStudentList)
+
+  const reduceDevelopers=developers.reduce((totalNames,currentName)=>{
+    //return totalNames+currentName =>bu şekilde yan yana bitişik olarak yazar fakat initialValue 'ya [] verirsek dizi içerisinde yazar
+    return [...totalNames,currentName]
+  },[])
+
+  console.log(reduceDevelopers);
