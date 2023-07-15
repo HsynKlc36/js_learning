@@ -10,14 +10,21 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const processData = async () => {
   console.log("İşlem başladı");
 
-  await delay(2000);
+   await delay(2000);
   console.log("İşlem devam ediyor...");
 
   await delay(2000);
   console.log("İşlem tamamlandı");
 };
 
-processData();
+console.log('func çalışmadan önce')
+ processData();//async function'larda cağırırken doğrudan await yapısını js de kullanamıyoruz!
+//  const main = async () => {
+//   await processData();
+// };
+
+// main();
+ console.log('func çalıştıktan sonra')
 
 const jsonplaceholderAPI = "https://jsonplaceholder.typicode.com";
 const getTodos = async () => {
@@ -48,7 +55,9 @@ console.log(todos)
 console.log("Kodun başı");
 
 setTimeout(() => {
-    console.log("Asenkron işlem");
+    console.log("Asenkron işlem");// 2 saniye gecikmeli çalışır!
   }, 2000);
   
   console.log("Kodun sonu");
+
+  //NOT:Asenkron ifadelerde ana işlevde kod akmaya devam eder çünkü ana işlevde asenkron çalışır.örneğin yukarıda 2 console.log() arasında func() çağırıldığında ve asenkron(async) bir funck olduğunda fonksiyondaki kodlar akarken bir cevap için beklenecek ve öyle function akmaya devam edecekse bu sırada ana işlevdeki kod akmaya devam edecektir function da cevap alındığında function daki kalan kodlarda tamamlanacaktır!

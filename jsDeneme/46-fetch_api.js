@@ -8,6 +8,7 @@ fetch("../fetchData/settings.json").then(
         return response.json()}
   ).then(responseJson => {
     console.log(responseJson)
+    console.log(JSON.stringify(responseJson))
     console.log(responseJson.userName)
   })
   
@@ -17,12 +18,17 @@ fetch("../fetchData/settings.json").then(
   fetch("https://jsonplaceholder.typicode.com/posts").then(
     response => response.json()
   ).then(responseJson => {
+    console.log(responseJson)
     responseJson.forEach(item => {
       let liDOM = document.createElement('li')
       liDOM.innerHTML = item.title
       userListDOM.appendChild(liDOM)
     })
   })
+
+
+  
+ 
 
   //Promise
   const jsonplaceholderAPI = "https://jsonplaceholder.typicode.com";
@@ -46,42 +52,44 @@ const getRequest = (url) => {
     )
 }
 
-// console.log(1);
-// console.log(2);
-// getRequest(`${jsonplaceholderAPI}/posts/1`)
-//     .then(response => {
-//         console.log(response)
-//     })
-// console.log(4);
-// console.log(5);
+console.log(1);
+console.log(2);
+getRequest(`${jsonplaceholderAPI}/posts/1`)
+    .then(response => {
+        console.log(response)
+    })
+console.log(4);
+console.log(5);
 
-// getRequest(`${jsonplaceholderAPI}/posts/1`)
-//     .then(response => {
-//         console.log(response);
-//         return getRequest(`${jsonplaceholderAPI}/posts/2`)
-//     })
-//     .then(response => {
-//         console.log(response);
-//         return getRequest(`${jsonplaceholderAPI}/posts/3`)
-//     })
-//     .then(response => {
-//         console.log(response);
-//         return getRequest(`${jsonplaceholderAPI}/posts/4`)
-//     })
-//     .then(response => {
-//         console.log(response);
-//     })
-//     .catch(err => console.log(err))
+getRequest(`${jsonplaceholderAPI}/posts/1`)
+    .then(response => {
+        console.log(response);
+        return getRequest(`${jsonplaceholderAPI}/posts/2`)
+    })
+    .then(response => {
+        console.log(response);
+        return getRequest(`${jsonplaceholderAPI}/posts/3`)
+    })
+    .then(response => {
+        console.log(response);
+        return getRequest(`${jsonplaceholderAPI}/posts/4`)
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => console.log(err))
 
 //fetch
-// fetch(jsonplaceholderAPI + "/posts/1")
-//     .then(response => response.json())
-//     .then(data => console.log(data));
+//GET
+fetch(jsonplaceholderAPI + "/posts/1")
+    .then(response => response.json())
+    .then(data => console.log(data));
 
 
 const newPost = { userId: 3, title: "Lorem", body: "ipsum" };
 const newTodo = { userId: 3, title: "Lorem", completed: false };
 
+//POST(EKLEME)
 fetch(jsonplaceholderAPI + "/posts/", {
     method: "POST",
     headers: {
@@ -89,23 +97,90 @@ fetch(jsonplaceholderAPI + "/posts/", {
     },
     body: JSON.stringify(newPost)
 })
-    .then(response => console.log(response.status));
+    .then(response => console.log(response.status))
 
+//POST FUNCTION
+const createTodo = (_newTodo) => {
+    return fetch(jsonplaceholderAPI + "/todos/", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(_newTodo)
+    })
+        .then(response => {
+            console.log(response.json())
+            return response});
+}
 
-// const createTodo = (_newTodo) => {
-//     return fetch(jsonplaceholderAPI + "/todos/", {
-//         method: "POST",
-//         headers: {
-//             "Content-type": "application/json"
-//         },
-//         body: JSON.stringify(_newTodo)
-//     })
-//         .then(response => response);
-// }
+ createTodo(newTodo).then(todoResponse => console.log(todoResponse.status));
 
-// createTodo(newTodo).then(todoResponse => console.log(todoResponse.status));
+//PUT(GÜNCELLEME)
+// fetch(jsonplaceholderAPI + "/todos/" + id, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(updatedData),
+//   }).then(response => console.log(response.status));
 
+//PUT FUNCTION
+const updateData = async (id, updatedData) => {
+    const response = await fetch(jsonplaceholderAPI + "/todos/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+    const updatedItem = await response.json();
+    console.log("Güncellenen veri:", updatedItem);
+  };
+  
+  const updatedData = {
+    title: "Güncellenmiş veri",
+    completed: true,
+  };
+  
+  updateData(1, updatedData);
 
+  //PATCH
+  const updateData2 = async (id, updatedData) => {
+    const response = await fetch(jsonplaceholderAPI + "/todos/" + id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+    const updatedItem = await response.json();
+    console.log("Güncellenen veri:", updatedItem);
+  };
+  
+  const updatedData2 = {
+    title: "Güncellenmiş veri",
+    completed: true,
+  };
+  
+  updateData2(1, updatedData2);
+
+//NOT:Update ile Patch arasındaki fark?
+//PATCH işlemi, belirli bir kaydın sadece belirli alanlarını güncellemek için kullanılır.Update ise belirli kaydın tamamında değişiklik yani güncelleme yapmamıza olanak sağlar!
+
+  //DELETE
+  const deleteData = async (id) => {
+    const response = await fetch(jsonplaceholderAPI + "/todos/" + id, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+        console.log(response.status)
+      console.log("Veri başarıyla silindi");
+    } else {
+      console.log("Veri silinirken bir hata oluştu");
+    }
+  };
+  
+  deleteData(1);
 
 //**********************************NOT ***************************/
 // readyState özelliği, bir HTTP isteğinin durumunu belirten bir değerdir. Bu özelliği kullanarak, bir XMLHttpRequest veya Fetch API'si ile gönderilen bir isteğin hangi aşamada olduğunu kontrol edebilirsiniz. JavaScript'te readyState özelliği, 0'dan 4'e kadar değerler alabilir ve her bir değer belirli bir aşamayı temsil eder. Aşağıda bu değerlerin anlamları açıklanmaktadır:
@@ -139,17 +214,18 @@ fetch(jsonplaceholderAPI + "/posts/", {
 //************************************NOT4 **************************************/
 //JS İLE JSON ARASINDAKİ FARKLILIKLAR
 //js nesnesini json dizesine çevirmek:
-const myObject = { key1: "value1", key2: "value2", key3: "value3" };
+const myObject = { key1: "value1", key2: "value2", key3: "value3",key4:2 };
 
-const jsonString = JSON.stringify(myObject);
+const jsonString = JSON.stringify(myObject);//json nesnesi
 
 console.log(jsonString);//{"key1":"value1","key2":"value2","key3":"value3"}
 //console.log(jsonString.key1); => bu bir json dizesi olduğu için ve tamamen string bir dize olduğu için içerisindeki herhangi bir key'e ulaşılamaz!
 //json verisini js nesnesine çevirmek:
 
-const jsonString2 = '{"key1":"value1","key2":"value2","key3":"value3"}';
+const jsonString2 = '{"key1":"value1","key2":"value2","key3":"value3","key4":2}';//json nesnesi
 
-const jsonObject = JSON.parse(jsonString2); 
+const jsonObject = JSON.parse(jsonString2); //js nesnesi
+
  
 
 console.log(jsonObject);
