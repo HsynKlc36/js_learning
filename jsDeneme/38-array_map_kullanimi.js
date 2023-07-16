@@ -12,7 +12,12 @@ const USERS = ["AYSE", "MehMet", "TugCE", "AkSEL"]
 // {userName: "AYSE", shortName: "A.", newName: "Ayse"}
 
 const NEW_USERS = USERS.map(user => user.toLowerCase())
-console.log(NEW_USERS)
+const NEW_USERS2 = USERS.map((user,index,arr) => {
+    arr[index]=user.toUpperCase()//burada doğrudan USERS dizisi üzerinde değişiklik yapmış oluruz!
+    return user.toLowerCase()})// map ile item'ları dönerken değişiklik yapabiliriz ve bu değişikliği return ile yeni oluşan diziye atarız!çünkü map bize yeni bir dizi döndürür!
+console.log(NEW_USERS)//['ayse','mehmet','tugce','aksel']
+console.log(NEW_USERS2)//['ayse','mehmet','tugce','aksel']
+console.log(USERS)//["AYSE", "MehMet", "TugCE", "AkSEL"]
 
 const numbers=[2,3,5,7,11,4,6]
 const newNumbers=numbers.map((number,index,array)=> number*2
@@ -41,7 +46,7 @@ const USERS_OBJ = USERS.map(item => (
     { userName: item, shortName: `${item[0]}.`, newName: `${item[0].toUpperCase()}${item.slice(1).toLowerCase()}` }//users bir diziyken bu şekilde işleyerek users'ı nesneye çevirip yeni bir dizi oluşturuyorum!
 ))
 const USERS_OB = USERS.map((item,index,array) => {
-    array[index]=item.toUpperCase();
+    array[index]=item.toLowerCase();
     return ( { userName: item, shortName: `${item[0]}.`, newName: `${item[0].toUpperCase()}${item.slice(1).toLowerCase()}` })//users bir diziyken bu şekilde işleyerek users'ı nesneye çevirip yeni bir dizi oluşturuyorum!  
 })
 

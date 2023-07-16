@@ -6,6 +6,7 @@ formDom.addEventListener('submit', formSubmit)//submitlerde formun eventleriyle 
 
 function formSubmit(event) {
      event.preventDefault();// get işlemini yapma ben söyleyene kadar hiçbir işlem yapma demek default işlemi engelledik.Yani get işleminde kalır butona tıklasanda formu göndermez.İşlemin yapılmasını engeller.
+    //event.stopPropagation();//yayılmayı engeller!
     console.log("işlem gerçekleştirildi")
     
 }

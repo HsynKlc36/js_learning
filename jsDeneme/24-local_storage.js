@@ -11,7 +11,6 @@ localStorage.setItem('userEmail', email) // -> anahtar, deger yapisi kullanilir(
 let localStorageEMailInfo = localStorage.getItem('userEmail') // daha once atadigimiz anahtar bilgisi
 
 console.log(localStorageEMailInfo)//"simplefurkan@gmail.com"
-
 //localStorage içerisinde value değerinde değişiklik yapmak
 localStorage.setItem('userEmail', email2)
 
@@ -20,7 +19,7 @@ let localStorageEMail2Info = localStorage.getItem('userEmail') // daha once atad
 console.log(localStorageEMail2Info)//"hüseyin_kilic96@hotmail.com"
 
 // localStorage icerisinden istenilen Key bilgisinin silinmesi:
-localStorage.removeItem('userEmail') // key bilgisini yazarak silebiliriz..
+ localStorage.removeItem('userEmail') // key bilgisini yazarak silebiliriz..
 
 //Veri Ekleme
 //localStorage built -in fonksiyonları ile veriler üzerinde işlem yapmak oldukça kolaydır.setItem metodu kayıt eklemek için kullanılmaktadır.Bu metot iki parametre almaktadır.Bunların ilki ‘key’ yani anahtar adı ikincisi ise ‘value’ yani o anahtara karşılık gelen değeri ifade etmektedir.

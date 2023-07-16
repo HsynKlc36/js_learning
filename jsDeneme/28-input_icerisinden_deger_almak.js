@@ -44,7 +44,7 @@ var myDiv = document.createElement("div"); //şeklinde yapabiliriz.
 
 myDiv.appendChild(myInput);
 
-//ardından html içerisinde olan dinamik id'li div ek ekleyelim
+//ardından html içerisinde olan dinamik id'li div  ekleyelim
 var dinDiv=document.getElementById('dinamik');
 dinDiv.appendChild(myDiv);
 

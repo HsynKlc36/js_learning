@@ -11,8 +11,8 @@
 //    }
 
 const PRODUCTS = ["Laptop", "Phone", "Speaker", "Desktop PC", "Server", "Mouse", "Keyboard"]
-PRODUCTS.forEach((product, index) => console.log(`${product} ${index}`))
-PRODUCTS.forEach(product => console.log(`${product.toUpperCase()}`))
+// PRODUCTS.forEach((product, index) => console.log(`${product} ${index}`))
+// PRODUCTS.forEach(product => console.log(`${product.toUpperCase()}`))
 PRODUCTS.forEach((product, index, array) => array[index] = `${product.toUpperCase()}`)
 
 console.log(PRODUCTS)//["LAPTOP", "PHONE", "SPEAKER", "DESKTOP PC", "SERVER", "MOUSE", "KEYBOARD"]
@@ -21,6 +21,8 @@ const userlistDOM = document.querySelector('#userList')
 PRODUCTS.forEach((item,index,arr) => {
     const liDOM = document.createElement('li')
     liDOM.innerHTML = `${item} - ${index}`
+    let diziElamanı=item.toLowerCase()
+    console.log(diziElamanı)
    arr[index]=`${item.toLowerCase()}`
     userlistDOM.append(liDOM)
 })

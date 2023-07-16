@@ -6,7 +6,7 @@ console.log("items ilk hali", items)
 
 // array içerisindeki değeri değiştirmek
 items[0] = 25;
-items[items.length]=33// sona eleman ekler
+items[items.length]=33// sona eleman ekler(yeni eleman)
 items[items.length - 1] = 100//son elemanı değiştirir
 //array 'in ilk elemanına ekleme
 items.unshift("elma")
@@ -29,7 +29,7 @@ console.log(lastitem)//50. sondan attığım elemanı bir değişken ile yakalad
 // splice() ile silme işlemi silme işlemi
 var sports = ['basketball', 'football', 'tennis'];
 console.log(sports); // basketball, football, tennis
-sports.splice(1, 1);//1. indeksten başla ve 1 eleman sil
+sports.splice(1, 1);//1. indeksten başla ve 1 eleman sil 2.index kaç eleman silineceğini söyler!
 console.log(sports); // basketball, tennis
 
 //splice() ile ekleme işlemi

@@ -18,7 +18,7 @@ const newNumbers=numbers.filter((number,index,array)=>{
    return (!(number%2))// burada 2 ye bölünenler true döner ve bunları diziye atar
 
 })
-console.log(newNumbers)
+console.log(newNumbers)//[2,4,6]
 console.log(numbers)//[4,6,10,14,22,8,12]
 
 // aktif kullanicilar ??
@@ -48,15 +48,17 @@ const person = [{
 {
     name: "Oğuz",
     age: 33,
-    languages: ["Java", "HTML"],
+    languages: ["Java", "HTML",'C#'],
 },
 {
     name: "Hasan",
     age: 45,
-    languages: ["C#", "JavaScript",'Rast'],
+    languages: ["C#", "JavaScript",'Rust'],
 }
 ];
 
 //yası 30 dan büyük olanı getir.
 const new_person = person.filter((person,index,array)=>array[index].languages[0]=='C#')
+const new_person2 = person.filter((person)=>person.languages[2]=='C#')
 console.log(new_person)
+console.log(new_person2)

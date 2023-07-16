@@ -50,7 +50,7 @@ console.log(allUsers)
 // Array icerisindeki bilgiyi String'e cevirmek -> toString, join
 console.log(allUsers.toString())//Ayse, Hulya, Merve, Ahmet, Hasan, Mehmet
 console.log(allUsers.join("-")) //Ayse-Hulya-Merve-Ahmet-Hasan-Mehmet
-
+console.log(allUsers)
 
 // Istedigimiz Index Bilgisine Oge Eklemek -> splice(index, 0, value)
 let userSplice=allUsers.splice(allUsers.length - 1, 0, "hüseyin")//son index' hüseyini ekler son indeksteki değeride bir fazlasına atar yani 6. indekse ekliyorsam hüseyini 6.indeksteki değerde artık 7.indekse kayacaktır.["Ayse", "Hulya", "Merve","Ahmet","Hasan","hüseyin", "Mehmet"]
@@ -66,6 +66,7 @@ console.log(newAllUsers);//["Ayse", "Hulya","Merve","resul","Ahmet","Hasan","hü
 
 //slice
 console.log(newAllUsers.slice(0, 1));//['Ayse']
+console.log(newAllUsers)//["Ayse", "Hulya","Merve","resul","Ahmet","Hasan","hüseyin", "Mehmet","Furkan", "Arkin", "Reha","erkan"]
 console.log(newAllUsers.slice(1, 5));//1.indexten başlar 5.index'e kadar alır fakat 5. index'i dahil etmez aldığı elemanlarda yine dizi içerisindedir.(4) ['Hulya', 'Merve', 'resul', 'Ahmet']
 console.log(newAllUsers.slice(1, -1));//dizinin eleman sayısını bilmiyorsak ve baştan ve sondan hangi indexten itibaren dahil olmasını istiyorsak bu şekilde uygularız. baştan ve sondan 1'er index'i dahil etmez (10) ['Hulya', 'Merve', 'resul', 'Ahmet', 'Hasan', 'hüseyin', 'Mehmet', 'Furkan', 'Arkin', 'Reha']
 console.log(newAllUsers);// (12) ['Ayse', 'Hulya', 'Merve', 'resul', 'Ahmet', 'Hasan', 'hüseyin', 'Mehmet', 'Furkan', 'Arkin', 'Reha', 'erkan']
@@ -93,7 +94,7 @@ console.log(
         return student === "Osman";
     })
 )
-
+console.log('*****************************************************************************')
 //findLast =>find yöntemi, bir dizide belirli bir koşulu sağlayan ilk öğeyi bulmak için kullanılır.fakat dizinin sonundan başlayarak arama yapar. Eğer koşulu sağlayan bir öğe bulunursa, bu öğeyi döndürür. Eğer koşulu sağlayan bir öğe bulunmazsa, undefined değerini döndürür.False ise koşul döngüde devam eder true geldiğinde dizide dönmeyi bırakır ve yakaladığı değeri döner!
 console.log(studentList.findLast((student, index) => {
     console.log(index)
@@ -129,8 +130,8 @@ console.log(
         //return total + currentNumber 
         //return total - currentNumber 
       }
-    , 6)
-  )
+   , 0 )
+  )// işleme göre initial value  default olarak, girmediğimiz durumda toplama 0 çarpmada 1 kabul edilir! 
   
   const studentObjList = [
     {name: "Halil Can Toptas", course: "Frontend Dev", instructor: "Orkun Durmaz", score: 90},

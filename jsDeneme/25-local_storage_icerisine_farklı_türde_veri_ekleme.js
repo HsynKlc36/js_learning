@@ -11,6 +11,9 @@ let user = {
 console.log(user)
 localStorage.setItem('userInfo', JSON.stringify(user))//bu şekilde yazmamızın sebebi object olarak değilde string olarak almak için.
 localStorage.setItem('user',user)//direkt object olarak görünecektir local storage' de [object Object] json verisi.
+// let user1=localStorage.getItem('user')
+// user1=JSON.parse(user1)
+// console.log(user1)// nesneyi doğrudan kaydetmeye çalıştığımızda object olarak kaydeder fakat getirip parse etmeye kalkarsak object nesnesini parse etmeyecektir!bu yüzden localStorage'a nesne ataması yaparken dikkatli olunmalı ve json nesnesine dönüştürülüp atılmalıdır!
 let userInfo = localStorage.getItem('userInfo')//bilgiyi al fakat bilgiyi string olarak alacaktır ben içerisindeki veriye ulaşamam yani userfInfo.username yaparsam bilgi gelmez çünkü string
 console.log(userInfo)
 userInfo = JSON.parse(userInfo) //json nesnesine parse ettik ve 19. satırda bu nesnenin içerisindeki veriye ulaştık!
