@@ -27,21 +27,22 @@ console.log(laptop1)
 
 // Yeni Bilgi Eklemek
 laptop1.version = "10.15.7"
+laptop1['version2'] = "10.15.8"
 console.log(laptop1)
 
 // Anahtar Bilgilerine Ulasmak (keys) -> Object.keys(item)
-keys = Object.keys(laptop1)// key bilgilerinde sadece ve sadece keyler gelecektir onlara atanan değerler gelmez.brand,model,version bunlar gelecektir ve keyler dizi halinde gelecektir.
-console.log(keys)
-console.log(Object.keys(laptop1))
+laptop1Keys = Object.keys(laptop1)// key bilgilerinde sadece ve sadece keyler gelecektir onlara atanan değerler gelmez.brand,model,version bunlar gelecektir ve keyler dizi halinde gelecektir.
+console.log(laptop1Keys)// ['brand', 'model', '2kg', 'modelName', 'model_name', 'version', 'version2']
+console.log(Object.keys(laptop1))// ['brand', 'model', '2kg', 'modelName', 'model_name', 'version', 'version2']
 
-keys.forEach(item => {
+laptop1Keys.forEach(item => {
     console.log(item)
     console.log(laptop1[item])
 })
 
 // Deger Bilgilerine Ulasmak (values) -> Object.values(item) nesne dizi değildir ama values değerlerini dizi seklinde döndürür.
 console.log(
-    Object.values(laptop1)
+    Object.values(laptop1)//['Mac1', 'MacBook Pro', 2, 'MacBook Pro', 'MacBook Pro', '10.15.7', '10.15.8']
 )
 
 let values = Object.values(laptop1)

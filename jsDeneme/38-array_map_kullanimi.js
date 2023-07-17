@@ -64,3 +64,5 @@ const yeniMaaslar = maaslar.map((e) => {
 
 console.log(yeniMaaslar);
 //[1210, 13650, 2750, 4725, 1650.0000000000002, 26250, 2200]
+
+

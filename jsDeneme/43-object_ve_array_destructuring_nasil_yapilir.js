@@ -3,13 +3,14 @@
 
 // Object Destructuring:
 
-let settings = {
+  let settings = {
     userName: "loremIpsum",
     password: "BadPassword",
     isActive: false,
     ip: "127.0.0.1", 
     serverName: "atsepete.com"
   }
+
   let auths = {
     userName: "resulMutluer",
     password: "GoodPassword",
@@ -23,16 +24,15 @@ let settings = {
   // console.log(userName)
   
   // rename && destructuring
-  let {userName: user, password:pass, isActive, ip:serverIP, serverName} = settings// burada settings içerisindeki userName property'sine karşılık gelen yeni nesnedeki userName'i normal şartlarda kullanmadan direkt olarak user ile yakalayamayız.Ancak userName:user dersek artık user propety name ile yakalayabiliriz!
+  let { userName:user, password:pass, isActive, ip:serverIP, serverName} = settings// burada settings içerisindeki userName property'sine karşılık gelen yeni nesnedeki userName'i normal şartlarda kullanmadan direkt olarak user ile yakalayamayız.Ancak userName:user dersek artık user propety name ile yakalayabiliriz!
 
-  let {userName: name, password:pass_word, ...other} = auths
-  
+  let {userName: rename, password:pass_word, ...other} = auths;
   console.log(user, pass, isActive, serverIP, serverName)
   console.log(settings)
   console.log(auths)
   console.log(user)
   console.log(pass)
-  console.log(name)
+  console.log(rename)
   console.log(pass_word)
   console.log(other)
   
@@ -59,7 +59,7 @@ let settings = {
   console.log("settings2", settings2)
 
   
-  let score = [100, 200, 300, 400]
+  let score = [100, 200, 300, 400,500,600,700]
   console.log(...score)
   
   let [score1, score2, ...otherScore] = score
@@ -68,5 +68,5 @@ let settings = {
   // object kopyalama ile ayni... let settings2 = {...settings} //Deep copy yapılır farklı referanslar ve aynı nesneyi işaretlemez farklı nesneleri işaretler böylelikle herhangi birinde yapılan değişiklik diğerini etkilemez!
   let copyOfScore = [...score]
   copyOfScore[0]=500;
-  console.log(copyOfScore)//[500, 200, 300, 400]
-  console.log(score)//[100, 200, 300, 400]
+  console.log(copyOfScore)//[500, 200, 300, 400,500,600,700]
+  console.log(score)//[100, 200, 300, 400,500,600,700]

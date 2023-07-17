@@ -24,10 +24,12 @@ let prototypeItem=Object.create(object2)// kalıtım almak için kullanılır!
 prototypeItem.properties='flag'
 prototypeItem.properties2='number'
 console.log(prototypeItem)
+console.log(prototypeItem.obj2)//Object.create() yöntemi kullanarak bir nesne oluşturduğunuzda, oluşturduğunuz nesnenin prototipi, parametre olarak verdiğiniz nesne olur. Yani prototypeItem nesnesinin prototipi object2 nesnesi olur. Bu durumda, prototypeItem nesnesi object2 nesnesinin özelliklerine doğrudan erişebilir.Bu nedenle, console.log(prototypeItem.obj2) ifadesi doğru bir şekilde obj2 özelliğine erişir ve değerini yazdırır.
 
 let prototypeItem2=Object.create(prototypeItem)
 prototypeItem2.num='8347893578934';
 console.log(prototypeItem2)
+console.log(prototypeItem2.obj2)
 
 console.log("object1", object1)
 
@@ -58,7 +60,9 @@ countriesTalkFrench.language = "french";
 //Obje oluşturmadaki son yöntem olan object.create() yöntemi, yeni bir obje oluştururken nereden kalıtım alacağına karar vermemizi sağlayan bir yöntemdir.Aşağıda yer alan örneklere bir bakalım;
 
 let noInheritence = Object.create(null);   //herhangi bir kalıtım(inheritence) almaz
-/*Herhangi bir yerden kalıtım almasını istemediğimiz bir obje oluşturmak istediğimizde null parametresini atamak yeterli olacaktır.*/
+/*Herhangi bir yerden kalıtım almasını istemediğimiz bir obje oluşturmak istediğimizde null parametresini atamak yeterli olacaktır.fakat object.prototype'dan gelen metotlara ulaşılamaz yani opject'i atası olarak düşünürsek null dediğimiz için atasından kalıtım alamayacak ve ondan gelen default metotları kullanamayacağız!*/
+noInheritence.flag='Turkey'
+noInheritence.flag='kocaeli'
 console.log(noInheritence);
 let standartObject = Object.create(Object.prototype) //standart obje kalıtımı alır.
 /*standartObject isimli obje örneği, object literal ve new object keyword ile oluşturulan objelerin prototiplerini parametre olarak aldığı için, onlar gibi çalışır.*/
