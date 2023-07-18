@@ -60,4 +60,8 @@ setTimeout(() => {
   
   console.log("Kodun sonu");
 
+  setInterval(() => {
+    console.log('her saniye çalışacağım')
+  }, 1000);//her saniye tekrar tekrar tetiklenecektir
+
   //NOT:Asenkron ifadelerde ana işlevde kod akmaya devam eder çünkü ana işlevde asenkron çalışır.örneğin yukarıda 2 console.log() arasında func() çağırıldığında ve asenkron(async) bir funck olduğunda fonksiyondaki kodlar akarken bir cevap için beklenecek ve öyle function akmaya devam edecekse bu sırada ana işlevdeki kod akmaya devam edecektir function da cevap alındığında function daki kalan kodlarda tamamlanacaktır!
