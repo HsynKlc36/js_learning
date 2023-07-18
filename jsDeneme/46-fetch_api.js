@@ -27,9 +27,6 @@ fetch("../fetchData/settings.json").then(
   })
 
 
-  
- 
-
   //Promise
   const jsonplaceholderAPI = "https://jsonplaceholder.typicode.com";
 const getRequest = (url) => {
@@ -78,6 +75,24 @@ getRequest(`${jsonplaceholderAPI}/posts/1`)
         console.log(response);
     })
     .catch(err => console.log(err))
+
+
+
+    const getPost=(post_id)=>{
+      return new Promise(async (resolve,reject)=>{
+        const {data}=await axios('https://jsonplaceholder.typicode.com/posts/'+post_id);
+        resolve(data)
+      })
+    }
+    const getUsers=()=>{
+      return new Promise(async (resolve,reject)=>{
+        const {data}=await axios('https://jsonplaceholder.typicode.com/users');
+        resolve(data)
+      })
+    }
+    
+    //Promise.all
+    Promise.all([getPost(1),getUsers()]).then(console.log).catch(console.log);// birden çok promise metodunu, sıralı bir şekilde çalıştırmaya yarar!
 
 //fetch
 //GET
