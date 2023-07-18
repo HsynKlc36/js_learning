@@ -203,6 +203,9 @@ const updateData = async (id, updatedData) => {
     console.log(users)
   };
 axiosFunc();
+
+
+
 //**********************************NOT ***************************/
 // readyState özelliği, bir HTTP isteğinin durumunu belirten bir değerdir. Bu özelliği kullanarak, bir XMLHttpRequest veya Fetch API'si ile gönderilen bir isteğin hangi aşamada olduğunu kontrol edebilirsiniz. JavaScript'te readyState özelliği, 0'dan 4'e kadar değerler alabilir ve her bir değer belirli bir aşamayı temsil eder. Aşağıda bu değerlerin anlamları açıklanmaktadır:
 
