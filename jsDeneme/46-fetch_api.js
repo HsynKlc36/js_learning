@@ -181,7 +181,13 @@ const updateData = async (id, updatedData) => {
   };
   
   deleteData(1);
-
+//--------------------------------------------------AXIOS-----------------------------------------------------
+  //AXIOS =>bunu kullanabilmek için projeye import edilmelidir! fetch den farkı ise {data} dediğimizde doğrudan dataları alacak ve json() metodunu kullanmadan otomatik olarak json nesnesini js nesnesine çevirecektir.Yani fetch deki gibi manuel olarak yapmamıza gerek kalmamaktadır.fakat dediğim gibi ya kullandığınız yere import edersiniz ya da cdn olarak kodun kullanılacağı html sayfasına cdn'ini eklemelisiniz!
+  const axiosFunc=async ()=>{
+    const {data:users}=await axios("https://jsonplaceholder.typicode.com/users");
+    console.log(users)
+  };
+axiosFunc();
 //**********************************NOT ***************************/
 // readyState özelliği, bir HTTP isteğinin durumunu belirten bir değerdir. Bu özelliği kullanarak, bir XMLHttpRequest veya Fetch API'si ile gönderilen bir isteğin hangi aşamada olduğunu kontrol edebilirsiniz. JavaScript'te readyState özelliği, 0'dan 4'e kadar değerler alabilir ve her bir değer belirli bir aşamayı temsil eder. Aşağıda bu değerlerin anlamları açıklanmaktadır:
 
